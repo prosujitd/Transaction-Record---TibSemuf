@@ -19,7 +19,7 @@ app.get("/", (req, res) => {
 
 app.use('/transaction',TransactionApi)
 
-await connect();  // let's make db connect first before server
+await connect();  // let's make db connect first before
 
 app.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);

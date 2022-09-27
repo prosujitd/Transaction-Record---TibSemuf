@@ -1,10 +1,7 @@
 import { Router } from "express";
-
 import TransactionModel from "../models/transaction.js";
 
 const router = Router();
-
-
 
 router.get("/", async (req, res) => {
   const transaction = await TransactionModel.find({}).sort({ createdAt: -1 });
@@ -21,6 +18,17 @@ router.post("/", async (req, res) => {
   await transaction.save();
   console.log(req.body);
   res.json({ message: req.body });
+});
+
+
+router.delete("/:id", async (req, res) => {
+  await TransactionModel.findOneAndDelete({_id: req.params.id});
+  res.json({message: 'Success'});
+});
+
+router.patch("/:id", async (req, res) => {
+  await TransactionModel.updateOne({_id: req.params.id},{$set: req.body});
+  res.json({message: 'Success'});
 });
 
 export default router;
