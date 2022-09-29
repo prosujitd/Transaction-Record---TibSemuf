@@ -8,6 +8,7 @@ import bodyParser from "body-parser";
 
 import TransactionApi from "./routes/transactionsApi.js";
 import AuthApi from "./routes/authApi.js";
+import UserApi from "./routes/UserApi.js";
 import passport from "passport";
 
 // require('dotenv').config()
@@ -30,6 +31,7 @@ app.get("/", (req, res) => {
 
 app.use('/transaction',TransactionApi)
 app.use('/auth',AuthApi)
+app.use('/user',UserApi)
 
 await connect();  // let's make db connect first before
 
