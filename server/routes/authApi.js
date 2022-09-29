@@ -26,7 +26,7 @@ router.post("/login", async(req,res) => {
       _id: userExists._id,
     };
 
-    const token = jwt.sign(payload,'some secret.');
+    const token = jwt.sign(payload,process.env.JWT_SECRET);
     console.log(token);
     res.json({message: " successfully loggged in ",token})
 
